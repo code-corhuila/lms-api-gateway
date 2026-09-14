@@ -5,6 +5,19 @@
 Part of the **LMS Library** distributed system — team `lms-library`, Grupo 2.
 Governance and documentation live in [`library-docs`](https://github.com/code-corhuila/library-docs).
 
+## Migration scope
+
+**Comes from** `lms-library` → `infra/nginx/nginx.conf`.
+
+It already routes `/api/v1/auth` → access, `/api/v1/students` → membership, `/api/v1/books` → catalog.
+**`/api/v1/loans` → circulation does not exist yet** — the web UI for loans has no backend behind it.
+
+Convention already in use: each domain adds its own `location` block as it comes online.
+
+The full map lives in `library-docs`.
+
+---
+
 ## Branching
 
 Three permanent branches. **None of them accepts a direct commit** — you enter through a child
