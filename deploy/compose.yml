@@ -1,0 +1,20 @@
+# Runs this gateway alone, built and served by nginx — for local preview.
+# lms-infra composes every service together for real (rules/2-anexos/G-infra.md
+# once that repo exists; locally, see lms-pod/compose.yml for the full
+# assembly this gateway expects to run alongside: access-service,
+# membership-service, catalog-service, circulation-service, shell).
+services:
+  api-gateway:
+    build:
+      context: ..
+      dockerfile: deploy/Dockerfile
+    container_name: api-gateway
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    networks:
+      - platform
+
+networks:
+  platform:
+    external: true
